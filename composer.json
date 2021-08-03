@@ -1,5 +1,5 @@
 {
-    "name": "ridown/linnworks",
+    "name": "onfuro/linnworks",
     "description": "Linnworks API wrapper",
     "license": "MIT",
     "authors": [
@@ -9,28 +9,28 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "^7.0"
+        "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "psr-4": {
-            "Ridown\\Linnworks\\": "src"
+            "Onfuro\\Linnworks\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Ridown\\Linnworks\\Tests\\": "tests"
+            "Onfuro\\Linnworks\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Ridown\\Linnworks\\LinnworksServiceProvider"
+                "Onfuro\\Linnworks\\LinnworksServiceProvider"
             ],
             "aliases": {
-                "Linnworks": "Ridown\\Linnworks\\LinnworksFacade"
+                "Linnworks": "Onfuro\\Linnworks\\LinnworksFacade"
             }
         }
     },
