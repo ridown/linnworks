@@ -46,5 +46,16 @@ class Stock extends ApiClient
             ]),
         ]);
     }
+    
+    public function UpdateStockLevelsBySKU(string $SKU = "", string $LocationId = "", $Level) : array
+    {
+        return $this->get('Stock/UpdateStockLevelsBySKU', [
+            "stockLevels" => json_encode([
+                "SKU" => $SKU,
+                "LocationId" => $locationId,
+                "Level" => $Level,
+            ]),
+        ]);
+    }
 
 }
