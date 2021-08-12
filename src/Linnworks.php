@@ -3,6 +3,7 @@
 namespace Onfuro\Linnworks;
 
 use Onfuro\Linnworks\Api\Auth;
+use Onfuro\Linnworks\Api\Inventory;
 use Onfuro\Linnworks\Api\Locations;
 use Onfuro\Linnworks\Api\Orders;
 use Onfuro\Linnworks\Api\PostalServices;
@@ -75,6 +76,11 @@ class Linnworks
     public function orders(): Orders
     {
         return new Orders($this->client, $this->server, $this->bearer);
+    }
+    
+    public function inventory(): Inventory
+    {
+        return new Inventory($this->client, $this->server, $this->bearer);
     }
 
     public function locations(): Locations
