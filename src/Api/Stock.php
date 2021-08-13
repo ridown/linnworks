@@ -4,6 +4,8 @@ namespace Onfuro\Linnworks\Api;
 
 class Stock extends ApiClient
 {
+    public $path = 'Stock';
+
     public function getStockConsumption(string $stockItemId = "", string $locationId = "", string $startDate = "", string $endDate = "")
     {
         return $this->get('Stock/GetStockConsumption', [
@@ -13,7 +15,20 @@ class Stock extends ApiClient
             "endDate" => $endDate,
         ]);
     }
-
+    
+    public function getStockItemsFull(string $keyWord = "",string $locationId = "",int $entriesPerPage = 100, int $pageNumber = 1, bool $excludeComposites = true, bool $excludeVariations = true, bool $excludeBatches = true)
+    {
+        return $this->get($this->path . '/' . __METHOD__, [
+            "keyWord" => $keyWord,
+            "locationId" => $locationId,
+            "entriesPerPage" => $entriesPerPage,
+            "pageNumber" => $pageNumber,
+            "excludeComposites" => $excludeComposites,
+            "excludeVariations" => $excludeVariations,
+            "excludeBatches" => $excludeBatches,
+        ]);
+    }
+    
     public function getStockItems(string $keyWord = "",string $locationId = "",int $entriesPerPage = 100, int $pageNumber = 1, bool $excludeComposites = true, bool $excludeVariations = true, bool $excludeBatches = true)
     {
         return $this->get('Stock/GetStockItems', [
@@ -46,7 +61,7 @@ class Stock extends ApiClient
             ]),
         ]);
     }
-    
+
     public function UpdateStockLevelsBySKU(string $SKU = "", string $LocationId = "", $Level) : array
     {
         return $this->get('Stock/UpdateStockLevelsBySKU', [
