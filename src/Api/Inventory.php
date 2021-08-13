@@ -9,14 +9,14 @@ class Inventory extends ApiClient
    
     public function GetInventoryItemTitles(string $inventoryItemId = '') : array
     {
-        return $this->get($this->path . '/GetInventoryItemTitles', [
+        return $this->get($this->path . '/' . __FUNCTION__, [
             "inventoryItemId" => $inventoryItemId,
         ]);
     }
     
     public function GetInventoryItemsCount(boolean $includeDeleted = false, boolean $includeArchived = false) : array
     {
-        return $this->get($this->path . '/GetInventoryItemsCount', [
+        return $this->get($this->path . '/' . __FUNCTION__, [
             "includeDeleted" => $includeDeleted,
             "includeArchived" => $includeArchived,
         ]);
@@ -24,16 +24,9 @@ class Inventory extends ApiClient
     
     public function GetInventoryItemById(string $id = "") : array
     {
-        if(!empty($id)) 
-        {
-            return $this->get($this->path . '/GetInventoryItemById', [
-                "id" => $id,
-            ]);
-        } 
-        else 
-        {
-            return [];
-        }
+        return $this->get($this->path . '/' . __FUNCTION__, [
+            "id" => $id,
+        ]);
     }
     
     
