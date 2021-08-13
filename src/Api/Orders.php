@@ -5,8 +5,13 @@ namespace Onfuro\Linnworks\Api;
 class Orders extends ApiClient
 {
 
-    public function getOpenOrders(string $fulfilmentCenter = '00000000-0000-0000-0000-000000000000', int $entriesPerPage = 25, int $pageNumber = 1, string $filters = "", string $sorting = "[]", string $additionalFilters = "")
+    public function getOpenOrders(string $fulfilmentCenter = '00000000-0000-0000-0000-000000000000', int $entriesPerPage = 25, int $pageNumber = 1, array $filters = [], string $sorting = "[]", string $additionalFilters = "")
     {
+        if(!empty($filters)) {
+            $filters = json_encode($filters);
+        } else {
+            $filters = '';
+        }
         return $this->get('Orders/GetOpenOrders', [
             "entriesPerPage" => $entriesPerPage,
             "pageNumber" => $pageNumber,
@@ -209,7 +214,7 @@ class Orders extends ApiClient
             'OrderState' => $orderState,
             'PaymentStatus' => $paymentStatus,
             'PaidOn' => $paidDate ? date('c', strtotime($paidDate)) : null,
-            
+
             //Notes - Particularly useful for personalised items.
             'Notes' => $notes
 
