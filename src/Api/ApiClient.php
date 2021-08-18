@@ -24,7 +24,7 @@ class ApiClient
         $this->bearer = $bearer;
     }
 
-    public function get($url = null, array $parameters = []): array
+    public function get($url = null, array $parameters = [])
     {
         return $this->parse(function() use($url, $parameters){
             return $this->client->get($this->server.$url, [
@@ -37,7 +37,7 @@ class ApiClient
         });
     }
 
-    public function post($url = null, array $parameters = []): array
+    public function post($url = null, array $parameters = [])
     {
         return $this->parse(function() use($url, $parameters){
             return $this->client->post($this->server.$url, [
