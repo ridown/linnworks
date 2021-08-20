@@ -38,19 +38,18 @@ class Stock extends ApiClient
             "SKU" => $SKU
         ]);
     }
-    
-    public function GetStockItemsFull(string $keyWord = "",string $locationId = "",int $entriesPerPage = 100, int $pageNumber = 1, array $dataRequirements = [], array $searchTypes = [],  bool $loadCompositeParents = true, bool $loadVariationParents = true)
+
+    public function GetStockItemsFull(string $keyWord = "",int $entriesPerPage = 100, int $pageNumber = 1, array $dataRequirements = [], array $searchTypes = [],  bool $loadCompositeParents = true, bool $loadVariationParents = true)
     {
         if(!empty($dataRequirements)) { $dataRequirements = json_encode($dataRequirements); }
         if(!empty($searchTypes)) { $searchTypes = json_encode($searchTypes); }
 
         return $this->get($this->path . '/' . __FUNCTION__, [
             "keyWord" => $keyWord,
-            "locationId" => $locationId,
-            "entriesPerPage" => $entriesPerPage,
-            "pageNumber" => $pageNumber,
             "loadCompositeParents" => $loadCompositeParents,
             "loadVariationParents" => $loadVariationParents,
+            "entriesPerPage" => $entriesPerPage,
+            "pageNumber" => $pageNumber,
             "dataRequirements" => $dataRequirements,
             "searchTypes" => $searchTypes,
         ]);
