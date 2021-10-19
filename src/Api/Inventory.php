@@ -14,7 +14,7 @@ class Inventory extends ApiClient
         ]);
     }
     
-    public function GetInventoryItemsCount(boolean $includeDeleted = false, boolean $includeArchived = false) : array
+    public function GetInventoryItemsCount(bool $includeDeleted = false, bool $includeArchived = false) : array
     {
         return $this->get($this->path . '/' . __FUNCTION__, [
             "includeDeleted" => $includeDeleted,
