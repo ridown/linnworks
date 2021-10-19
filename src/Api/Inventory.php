@@ -29,6 +29,9 @@ class Inventory extends ApiClient
         ]);
     }
     
-    
+    public function GetStockLocations()
+    {
+        return $this->get($this->path . '/' . __FUNCTION__);
+    }
 
 }
