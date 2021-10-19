@@ -77,6 +77,15 @@ class Orders extends ApiClient
         ]);
     }
 
+    public function AssignToFolder(array $orderIds = [], string $folder = "")
+    {
+        
+        return $this->get('Orders/AssignToFolder', [
+            "orderIds" => json_encode($orderIds),
+            "folder" => $folder
+        ]);
+    }
+
     public function changeStatus(array $orderIds = [], string $status = "")
     {
         return $this->get('Orders/ChangeStatus', [
@@ -240,6 +249,13 @@ class Orders extends ApiClient
             'note' => $note,
         ]);
     }
+
+    public function GetAvailableFolders()
+    {
+        return $this->post('Orders/GetAvailableFolders',[]);
+    }
+
+    
 
 //    public function setGeneralInfo(
 //        $guid
