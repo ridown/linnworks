@@ -88,6 +88,9 @@ class Stock extends ApiClient
         ]);
     }
 
+    /*
+     * Update by Delta??
+     */
     public function UpdateStockLevelsBySKU(string $SKU = "", string $LocationId = "", $Level) : array
     {
         return $this->get('Stock/UpdateStockLevelsBySKU', [
@@ -96,6 +99,20 @@ class Stock extends ApiClient
                 "LocationId" => $locationId,
                 "Level" => $Level,
             ]),
+        ]);
+    }
+    
+    /*
+     * Set by Fixed ammount??
+     */
+    public function SetStockLevel(string $SKU = "", string $LocationId = "", $Level) : array
+    {
+        return $this->get('Stock/SetStockLevel', [
+            "stockLevels" => json_encode([
+                 "SKU" => $SKU,
+                 "LocationId" => $locationId,
+                 "Level" => $Level,
+             ]),
         ]);
     }
 
