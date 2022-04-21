@@ -93,7 +93,7 @@ class Stock extends ApiClient
         return $this->get('Stock/UpdateStockLevelsBySKU', [
             "stockLevels" => json_encode([
                 "SKU" => $SKU,
-                "LocationId" => $locationId,
+                "LocationId" => $LocationId,
                 "Level" => $Level,
             ]),
         ]);
