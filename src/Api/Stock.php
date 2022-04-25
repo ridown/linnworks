@@ -93,12 +93,14 @@ class Stock extends ApiClient
      */
     public function UpdateStockLevelsBySKU(string $SKU = "", string $LocationId = "", $Level) : array
     {
+        if(!$LocationId) $LocationId = config('linnworks.default_warehouse_id');
+    
         return $this->get('Stock/UpdateStockLevelsBySKU', [
-            "stockLevels" => json_encode([
+            "stockLevels" => json_encode([[
                 "SKU" => $SKU,
                 "LocationId" => $LocationId,
                 "Level" => $Level,
-            ]),
+            ]]),
         ]);
     }
     
@@ -110,7 +112,7 @@ class Stock extends ApiClient
         return $this->get('Stock/SetStockLevel', [
             "stockLevels" => json_encode([
                  "SKU" => $SKU,
-                 "LocationId" => $locationId,
+                 "LocationId" => $LocationId,
                  "Level" => $Level,
              ]),
         ]);
